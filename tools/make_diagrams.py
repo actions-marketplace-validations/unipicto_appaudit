@@ -94,7 +94,7 @@ class Svg:
 
     def save(self, name):
         OUT.mkdir(parents=True, exist_ok=True)
-        (OUT / name).write_text("\n".join(self.parts) + "\n</svg>\n", encoding="utf-8", newline="\n")
+        (OUT / name).write_bytes(("\n".join(self.parts) + "\n</svg>\n").encode("utf-8"))
 
 
 def overview():

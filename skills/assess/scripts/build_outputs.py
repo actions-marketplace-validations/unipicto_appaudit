@@ -735,7 +735,7 @@ def main() -> int:
         files["delta.md"] = compare_runs.render_md(delta)
         files["delta.json"] = json.dumps(delta, indent=2, ensure_ascii=False) + "\n"
     for name, text in files.items():
-        (out / name).write_text(text, encoding="utf-8", newline="\n")
+        (out / name).write_bytes((text).encode("utf-8"))
     build_xlsx(data, out / "findings-register.xlsx")
     if attachments:
         (out / "attachments").mkdir()
@@ -765,7 +765,7 @@ def main() -> int:
     (out / "evidence-verification.json").unlink()
     manifest = [l for l in manifest_lines if not l.endswith("evidence-verification.json")]
     manifest.append(f"{sha256_file(bundle)}  evidence-bundle.zip")
-    (out / "MANIFEST.sha256").write_text("\n".join(manifest) + "\n", encoding="utf-8", newline="\n")
+    (out / "MANIFEST.sha256").write_bytes(("\n".join(manifest) + "\n").encode("utf-8"))
 
     print(json.dumps({"output_dir": str(out), "files": sorted(p.name for p in out.iterdir()),
                       "evidence_bundle_sha256": sha256_file(bundle), "update_check": update.get("status"),

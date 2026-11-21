@@ -504,6 +504,20 @@ def test_schema():
     check("schema: example validates", not errs, str(errs[:2]))
 
 
+def test_scripts_start():
+    """Every script must at least parse and print its help on this interpreter (catches version-specific syntax)."""
+    scripts = sorted(S.glob("*.py")) + sorted(H.glob("*.py")) + [ROOT / "scripts" / "verify_evidence.py"] + sorted((ROOT / "tools").glob("*.py"))
+    for f in scripts:
+        try:
+            compile(f.read_text(encoding="utf-8"), str(f), "exec")
+            check(f"syntax: {f.name}", True)
+        except SyntaxError as exc:
+            check(f"syntax: {f.name}", False, str(exc))
+    for name in ("vuln_intel.py", "check_update.py", "build_outputs.py", "merge_candidates.py", "compare_runs.py", "scan_extension.py"):
+        r = py(S / name, "--help")
+        check(f"starts: {name} --help", r.returncode == 0, r.stderr[-200:])
+
+
 def test_manifests():
     for p in [ROOT / ".claude-plugin/plugin.json", ROOT / ".claude-plugin/marketplace.json",
               ROOT / "hooks/hooks.json", ROOT / "skills/scope/references/scope-template.json"]:
@@ -516,6 +530,7 @@ def test_manifests():
 
 if __name__ == "__main__":
     test_manifests()
+    test_scripts_start()
     test_guard()
     test_evidence_and_session()
     test_outputs()

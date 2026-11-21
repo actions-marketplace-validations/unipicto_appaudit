@@ -40,8 +40,12 @@ Result of a critical pre-publication review. First version published on GitHub.
 - `docs/THREAT-MODEL.md` (what appaudit protects against, what it does not, known bypasses) and
   diagrams in `docs/assets/`.
 
+- **Python compatibility.** Two scripts needed a newer Python than documented (`build_outputs.py`
+  and `scan_extension.py` 3.10, `vuln_intel.py` 3.12). All scripts now run on Python 3.9, the
+  version macOS ships, and the tests start every script on each tested version.
+
 ### Changed
-- Tested on Python 3.9 and 3.13 (was 3.8 and 3.13).
+- Requires Python 3.9 or newer; CI tests 3.9, 3.11 and 3.13 on Linux, Windows and macOS.
 
 ## [4.3.2] - 2026-11-21
 

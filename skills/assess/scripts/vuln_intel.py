@@ -185,10 +185,12 @@ def main() -> int:
     else:
         print(f"{'CVE':<18}{'KEV':<6}{'EPSS':<8}{'Pctl':<7}{'CVSS':<6}{'Sev':<10}Vector")
         for r in rows:
+            epss = "-" if r["epss"] is None else format(r["epss"], ".3f")
+            pct = "-" if r["epss_percentile"] is None else format(r["epss_percentile"], ".2f")
             print(f"{r['cve']:<18}"
                   f"{('YES' if r['kev'] else 'no'):<6}"
-                  f"{(f'{r['epss']:.3f}' if r['epss'] is not None else '-'):<8}"
-                  f"{(f'{r['epss_percentile']:.2f}' if r['epss_percentile'] is not None else '-'):<7}"
+                  f"{epss:<8}"
+                  f"{pct:<7}"
                   f"{(str(r['cvss_score']) if r['cvss_score'] is not None else '-'):<6}"
                   f"{(r['cvss_severity'] or '-'):<10}"
                   f"{r['cvss_vector'] or '-'}")

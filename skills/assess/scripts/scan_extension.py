@@ -2056,11 +2056,11 @@ def main() -> int:
         inv["decision"] = decision(cands)[0]
         inv["candidate_counts"] = {s: sum(1 for x in cands if x["severity"] == s) for s in SEVERITIES}
     out.mkdir(parents=True, exist_ok=True)
-    (out / "inventory.json").write_text(json.dumps(inv, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-    (out / "candidates.json").write_text(json.dumps(cands, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-    (out / "capabilities.md").write_text(render_capabilities(scan, inv, cands), encoding="utf-8", newline="\n")
-    (out / "candidates.sarif").write_text(json.dumps(to_sarif(cands, name), indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
-    (out / "engagement.json").write_text(json.dumps(engagement(name, target.name), indent=2) + "\n", encoding="utf-8", newline="\n")
+    (out / "inventory.json").write_bytes((json.dumps(inv, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
+    (out / "candidates.json").write_bytes((json.dumps(cands, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
+    (out / "capabilities.md").write_bytes((render_capabilities(scan, inv, cands)).encode("utf-8"))
+    (out / "candidates.sarif").write_bytes((json.dumps(to_sarif(cands, name), indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
+    (out / "engagement.json").write_bytes((json.dumps(engagement(name, target.name), indent=2) + "\n").encode("utf-8"))
     unpacked = None
     if args.unpack:
         dest = Path(args.unpack)

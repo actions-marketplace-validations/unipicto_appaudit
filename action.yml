@@ -26,9 +26,9 @@ inputs:
     required: false
     default: ""
   output-dir:
-    description: "Where the reports are written"
+    description: "Where the reports are written (default: a folder in the runner's temporary directory; must be outside the scanned path)"
     required: false
-    default: "appaudit-scan"
+    default: ""
 outputs:
   decision:
     description: "no_blocking_issue_found, review_first or do_not_install_yet"
@@ -51,6 +51,7 @@ runs:
         APPAUDIT_ROOT: ${{ github.action_path }}
       run: |
         set -u
+        if [ -z "$APPAUDIT_OUT" ]; then APPAUDIT_OUT="${RUNNER_TEMP:-/tmp}/appaudit-scan"; fi
         PY=python3; command -v python3 >/dev/null 2>&1 || PY=python
         args=("$APPAUDIT_PATH" --name "$APPAUDIT_NAME" --out "$APPAUDIT_OUT")
         if [ -n "$APPAUDIT_BASELINE" ]; then args+=(--baseline "$APPAUDIT_BASELINE"); fi
