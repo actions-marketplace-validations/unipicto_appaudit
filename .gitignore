@@ -1,0 +1,10 @@
+# build output
+dist/
+__pycache__/
+*.pyc
+# engagement data: never commit evidence, scope files or reports
+.appaudit/
+# private terms for tools/release_check.py (names, e-mails, local paths)
+.release-deny
+.env
+.DS_Store

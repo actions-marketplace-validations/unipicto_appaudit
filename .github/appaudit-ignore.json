@@ -1,0 +1,12 @@
+[
+  {
+    "rule": "*",
+    "path": "tests/*",
+    "reason": "Test suite: deliberately unsafe fixtures used to prove the scanner and scope guard detect them; not part of any package"
+  },
+  {
+    "rule": "*",
+    "path": "docs/examples/*",
+    "reason": "Example outputs, including the scan of a synthetic unsafe plugin; not part of any package"
+  }
+]

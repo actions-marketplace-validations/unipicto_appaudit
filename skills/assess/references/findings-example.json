@@ -1,0 +1,252 @@
+{
+  "schema": "appaudit-findings/1",
+  "engagement": {
+    "name": "example-webshop-2026-11",
+    "client": "Example B.V.",
+    "target": "staging.example.nl (web shop and API)",
+    "date": "2026-11-20",
+    "assessor": "Claude (appaudit) + operator",
+    "authorization": {
+      "basis": "signed-scope",
+      "reference": "SOW-2026-041 §3, signed 2026-11-18"
+    },
+    "mode": "active",
+    "window": {
+      "start": "2026-11-20T09:00:00+01:00",
+      "end": "2026-11-27T18:00:00+01:00"
+    },
+    "scope": {
+      "in": [
+        "staging.example.nl",
+        "*.staging.example.nl"
+      ],
+      "out": [
+        "payments.staging.example.nl"
+      ]
+    },
+    "capabilities_used": [
+      "static review",
+      "shell",
+      "outbound HTTP"
+    ],
+    "threat_intel_refreshed": "2026-11-20",
+    "jurisdiction_profile": {
+      "established_in": [
+        "NL"
+      ],
+      "markets": [
+        "EU",
+        "UK",
+        "US"
+      ],
+      "sector": [
+        "retail"
+      ],
+      "roles": [
+        "controller"
+      ],
+      "data_subject_regions": [
+        "EU",
+        "UK",
+        "US-NY"
+      ],
+      "hosting_locations": [
+        "EU"
+      ],
+      "tester_location": [
+        "NL"
+      ],
+      "evidence_storage_location": "NL"
+    },
+    "jurisdictions_assessed": [
+      "EU",
+      "NL",
+      "UK",
+      "US"
+    ],
+    "jurisdictions_not_assessed": [],
+    "not_tested": [
+      "Payment provider integration (out of scope)",
+      "Mobile apps"
+    ]
+  },
+  "summary": {
+    "assessor_summary": "One confirmed access-control flaw exposes other customers' orders, including names and addresses. It should be fixed before the next release, and counsel should decide on the GDPR and UK GDPR flags.",
+    "decisions_needed": [
+      "Decide whether order data of other customers was accessed by anyone other than the assessor (log review)."
+    ]
+  },
+  "findings": [
+    {
+      "id": "AA-001",
+      "title": "Order details of other customers readable by changing the order ID (BOLA)",
+      "severity": "High",
+      "confidence": "Confirmed",
+      "verifier": {
+        "verdict": "Confirmed",
+        "notes": "Handler loads order by ID without owner check; evidence record 14 shows second test account's order returned."
+      },
+      "status": "open",
+      "asset": "Orders API",
+      "location": {
+        "kind": "file",
+        "uri": "src/api/orders.ts",
+        "start_line": 42,
+        "end_line": 51
+      },
+      "cwe": [
+        "CWE-639"
+      ],
+      "owasp": [
+        "API1:2023",
+        "A01:2025"
+      ],
+      "asvs": [],
+      "opencre": [],
+      "cve": [],
+      "cvss_v4": {
+        "nomenclature": "CVSS-BTE",
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:P/CR:H",
+        "score": null,
+        "calculator_url": ""
+      },
+      "ssvc": {
+        "exploitation": "public_poc",
+        "automatable": "yes",
+        "technical_impact": "partial",
+        "mission_wellbeing": "high",
+        "decision": "Attend"
+      },
+      "epss": null,
+      "kev": {
+        "listed": false
+      },
+      "description": "GET /api/orders/{id} returns any order to any logged-in user.",
+      "proof_steps": [
+        "Log in as test account A and create order 1001.",
+        "Log in as test account B and request GET /api/orders/1001.",
+        "Order 1001 (account A) is returned; name and address fields redacted in evidence."
+      ],
+      "root_cause": "The handler fetches the order by primary key and never compares order.owner_id with the session user.",
+      "impact": "Any customer can read every other customer's name, address and order history.",
+      "remediation": {
+        "summary": "Scope the query by the caller's user ID.",
+        "language": "ts",
+        "patch": "const order = await db.order.findFirst({ where: { id, ownerId: session.userId } });\nif (!order) return res.status(404).end();",
+        "regression_note": "Admin views need a separate, role-checked endpoint."
+      },
+      "retest": {
+        "action": "Repeat step 2 with account B.",
+        "expected": "404 Not Found"
+      },
+      "timeline": {
+        "basis": "organisation-defined",
+        "due": "2026-12-04"
+      },
+      "owner": "Backend team",
+      "regulatory": [
+        {
+          "jurisdiction": "EU",
+          "instrument": "GDPR",
+          "provision": "Art. 33",
+          "tier": "may_trigger_now",
+          "basis": "client is controller; personal data of EU customers was reachable; access by third parties not yet ruled out",
+          "deadline": "72 h after becoming aware of a personal-data breach",
+          "clock_start": "when the controller becomes aware a breach occurred",
+          "authority": "Autoriteit Persoonsgegevens",
+          "decided_by": "client/counsel",
+          "source": "eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "source_checked": "2026-11-18"
+        },
+        {
+          "jurisdiction": "UK",
+          "instrument": "UK GDPR",
+          "provision": "Art. 33",
+          "tier": "may_trigger_now",
+          "basis": "client is controller for UK customers; personal data was reachable; access by third parties not yet ruled out",
+          "deadline": "72 h after becoming aware of a personal-data breach",
+          "clock_start": "when the controller becomes aware a breach occurred",
+          "authority": "Information Commissioner's Office (ICO)",
+          "decided_by": "client/counsel",
+          "source": "legislation.gov.uk/eur/2016/679/article/33",
+          "source_checked": "2026-11-19"
+        }
+      ],
+      "disclosure": [],
+      "evidence_refs": [
+        {
+          "log_seq": 14,
+          "note": "account B receives order 1001"
+        }
+      ]
+    },
+    {
+      "id": "AA-002",
+      "title": "Missing Content-Security-Policy on all origins",
+      "severity": "Low",
+      "confidence": "Confirmed",
+      "verifier": {
+        "verdict": "Confirmed",
+        "notes": "Response headers in evidence record 3."
+      },
+      "asset": "Web front-end",
+      "location": {
+        "kind": "url",
+        "uri": "https://staging.example.nl/"
+      },
+      "cwe": [
+        "CWE-1021"
+      ],
+      "owasp": [
+        "A02:2025"
+      ],
+      "cvss_v4": {
+        "nomenclature": "CVSS-BTE",
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U",
+        "score": null
+      },
+      "ssvc": {
+        "exploitation": "none",
+        "automatable": "no",
+        "technical_impact": "partial",
+        "mission_wellbeing": "medium",
+        "decision": "Track"
+      },
+      "remediation": {
+        "summary": "Add the header baseline from module-web.md §D.",
+        "language": "http",
+        "patch": "Content-Security-Policy: default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+      },
+      "retest": {
+        "action": "curl -sI https://staging.example.nl/",
+        "expected": "Content-Security-Policy present"
+      },
+      "timeline": {
+        "basis": "organisation-defined",
+        "due": "2027-02-18"
+      },
+      "owner": "Front-end team",
+      "evidence_refs": [
+        {
+          "log_seq": 3
+        }
+      ]
+    }
+  ],
+  "verified_not_applicable": [
+    {
+      "item": "CVE-2025-29927 (Next.js middleware bypass)",
+      "reason": "Application does not use Next.js middleware for authorization."
+    },
+    {
+      "item": "NY GBL § 899-aa breach notice",
+      "reason": "Exposed fields (name, address, order history) are not 'private information' under § 899-aa(1)(b) without an identifier such as SSN, driver's licence or account number with access code."
+    }
+  ],
+  "evidence": {
+    "raw_location": ".appaudit/evidence on the assessor's encrypted laptop",
+    "access": "Assessor and client security officer",
+    "secrets_found": 0,
+    "rotation_recommended_for": []
+  }
+}

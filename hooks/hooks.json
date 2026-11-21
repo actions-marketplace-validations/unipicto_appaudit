@@ -1,0 +1,39 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\" || python -I \"${CLAUDE_PLUGIN_ROOT}/hooks/session_start.py\" || echo '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"appaudit: Python 3 was not found on PATH, so the appaudit scope guard and evidence log are not running in this session.\"}}'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(Bash|WebFetch|Write|Edit|MultiEdit|NotebookEdit|mcp__.*)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/hooks/scope_guard.py\" || python -I \"${CLAUDE_PLUGIN_ROOT}/hooks/scope_guard.py\" || { test -f \"${CLAUDE_PROJECT_DIR:-.}/.appaudit/scope.json\" && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"appaudit: Python 3 was not found, so the scope guard cannot check this call, and an engagement file exists in this project. Approve only calls that stay inside the engagement scope; install Python 3 to restore the guard.\"}}'; true; }",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "^(Bash|WebFetch|mcp__.*)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/hooks/evidence_log.py\" || python -I \"${CLAUDE_PLUGIN_ROOT}/hooks/evidence_log.py\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "unipicto",
+  "owner": {
+    "name": "UniPicto",
+    "url": "https://github.com/unipicto"
+  },
+  "metadata": {
+    "description": "UniPicto plugins for Claude Code and Cowork"
+  },
+  "plugins": [
+    {
+      "name": "appaudit",
+      "source": "./",
+      "version": "4.4.0",
+      "description": "Non-destructive security assessments for systems you own or have the owner's written permission to test: web apps, APIs, mobile/IoT apps, firmware, AI agents, and plugins, skills and MCP servers before you install them. Enforced scope, hash-chained evidence, independent verification, regulatory flags for 9 jurisdictions, six audit-ready outputs. Not a certification.",
+      "author": {
+        "name": "UniPicto"
+      },
+      "homepage": "https://github.com/unipicto/appaudit",
+      "repository": "https://github.com/unipicto/appaudit",
+      "license": "Apache-2.0",
+      "keywords": [
+        "agent-skills",
+        "appsec",
+        "asvs",
+        "audit",
+        "compliance",
+        "cra",
+        "cvss",
+        "gdpr",
+        "masvs",
+        "mcp",
+        "nis2",
+        "owasp",
+        "pentest",
+        "plugin-security",
+        "sarif",
+        "security",
+        "ssvc",
+        "supply-chain",
+        "vulnerability-assessment"
+      ],
+      "category": "security"
+    }
+  ]
+}

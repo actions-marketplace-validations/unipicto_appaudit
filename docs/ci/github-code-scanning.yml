@@ -1,0 +1,27 @@
+# Example workflow for YOUR application repository (not for appaudit itself):
+# upload the findings.sarif that appaudit produced to GitHub code scanning, so code findings
+# appear as alerts on the lines they point to.
+#
+# 1. Commit the reviewed findings.sarif to a path such as security/appaudit/findings.sarif
+#    (only after the client agrees that findings may be stored in the repository).
+# 2. Copy this file to .github/workflows/appaudit-sarif.yml in that repository.
+name: appaudit-sarif
+
+on:
+  push:
+    paths: ["security/appaudit/findings.sarif"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # pin to a full commit SHA
+      - uses: github/codeql-action/upload-sarif@v3   # pin to a full commit SHA
+        with:
+          sarif_file: security/appaudit/findings.sarif
+          category: appaudit

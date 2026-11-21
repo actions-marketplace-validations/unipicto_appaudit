@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">appaudit</title><desc id="d">Security assessments with Claude: scope guard, independent verification, audit-ready outputs.</desc>
+<defs><marker id="a334155" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="a1D4ED8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D4ED8"/></marker><marker id="a0F766E" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/></marker><marker id="a6D28D9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6D28D9"/></marker><marker id="aB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="aB42318" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B42318"/></marker><marker id="a15803D" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803D"/></marker></defs>
+<rect width="1280" height="640" fill="#0B1220"/>
+<rect x="64" y="72" width="10" height="150" rx="5" fill="#3B82F6"/>
+<text x="100" y="150" font-size="92" font-weight="800" fill="#FFFFFF" text-anchor="start">appaudit</text>
+<text x="104" y="206" font-size="34" font-weight="500" fill="#93C5FD" text-anchor="start">Security assessments with Claude</text>
+<text x="104" y="300" font-size="27" font-weight="400" fill="#E2E8F0" text-anchor="start">Web apps, APIs, mobile, firmware, AI agents</text>
+<text x="104" y="348" font-size="27" font-weight="400" fill="#E2E8F0" text-anchor="start">Plugins, skills and MCP servers checked before you install them</text>
+<text x="104" y="396" font-size="27" font-weight="400" fill="#E2E8F0" text-anchor="start">Enforced scope  ·  independent verification  ·  six audit-ready outputs</text>
+<rect x="104" y="478" width="130" height="50" rx="25" fill="#DC2626" stroke="#DC2626" stroke-width="0"/>
+<text x="169" y="511" font-size="22" font-weight="800" fill="#FFFFFF" text-anchor="middle">DENY</text>
+<rect x="250" y="478" width="130" height="50" rx="25" fill="#D97706" stroke="#D97706" stroke-width="0"/>
+<text x="315" y="511" font-size="22" font-weight="800" fill="#FFFFFF" text-anchor="middle">ASK</text>
+<rect x="396" y="478" width="130" height="50" rx="25" fill="#16A34A" stroke="#16A34A" stroke-width="0"/>
+<text x="461" y="511" font-size="22" font-weight="800" fill="#FFFFFF" text-anchor="middle">PASS</text>
+<text x="560" y="511" font-size="22" font-weight="400" fill="#94A3B8" text-anchor="start">a guard rail on every tool call</text>
+<text x="104" y="592" font-size="20" font-weight="400" fill="#64748B" text-anchor="start">github.com/unipicto/appaudit   ·   Apache-2.0   ·   for systems you own or may test</text>
+</svg>

@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Tests (standard library only)
+        run: python tests/run_tests.py
+      - name: Release check (personal data, secrets, versions, metadata limits)
+        run: python tools/release_check.py
+      - name: Schema check
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: |
+          python -m pip install --quiet jsonschema
+          python tests/run_tests.py
+      - name: Build packages (each is scanned with appaudit's own scanner)
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: python tools/build_dist.py --skip-check
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        with:
+          name: appaudit-dist
+          path: dist/
+
+  self-scan:
+    name: appaudit scans its own repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./
+        with:
+          path: "."
+          name: appaudit
+          fail-on: Low
+          ignore-file: .github/appaudit-ignore.json
