@@ -2,7 +2,9 @@ name: release
 
 on:
   push:
-    tags: ["v*"]
+    # Full version tags only (v4.4.1). The floating major tag (v4) that Marketplace users pin to is
+    # moved after each release and must not start a release run.
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
 
 permissions:
   contents: read
