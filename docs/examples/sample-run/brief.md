@@ -1,7 +1,7 @@
 # Security assessment brief — example-webshop-2026-11
 
 **Target:** staging.example.nl (web shop and API) · **Date:** 2026-11-20 · **Assessor:** Claude (appaudit) + operator  
-**Permission to test (declared by the assessor, not verified by appaudit):** signed-scope (SOW-2026-041 §3, signed 2026-11-18) · **Mode:** active · **Tool:** appaudit 4.4.1 (standards checked 2026-11-20, regulatory data checked 2026-11-20)
+**Permission to test (declared by the assessor, not verified by appaudit):** signed-scope (SOW-2026-041 §3, signed 2026-11-18) · **Mode:** active · **Tool:** appaudit 4.4.2 (standards checked 2026-11-20, regulatory data checked 2026-11-20)
 
 One confirmed access-control flaw exposes other customers' orders, including names and addresses. It should be fixed before the next release, and counsel should decide on the GDPR and UK GDPR flags.
 

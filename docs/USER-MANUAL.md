@@ -1,6 +1,6 @@
 # appaudit user manual
 
-Version 4.4.1. For the architecture see [HOW-IT-WORKS.md](HOW-IT-WORKS.md); for what each product
+Version 4.4.2. For the architecture see [HOW-IT-WORKS.md](HOW-IT-WORKS.md); for what each product
 type needs see [COVERAGE-GUIDE.md](COVERAGE-GUIDE.md); for ChatGPT, Gemini, Grok and coding agents
 see [OTHER-ASSISTANTS.md](OTHER-ASSISTANTS.md).
 
@@ -112,8 +112,8 @@ code, configuration or firmware review needs no scope file.
 
 The first line of the first reply is the update result, for example:
 
-> appaudit 4.4.1 is up to date.
-> appaudit 4.5.0 is available (installed 4.4.1): see https://github.com/unipicto/appaudit/releases. Continuing with 4.4.1.
+> appaudit 4.4.2 is up to date.
+> appaudit 4.5.0 is available (installed 4.4.2): see https://github.com/unipicto/appaudit/releases. Continuing with 4.4.2.
 
 The check reads the published version from GitHub, warns if the bundled standards or
 regulatory data is older than 90 days, saves the result to `.appaudit/update-check.json`
@@ -306,10 +306,10 @@ comparison when `--previous` was used.
 
 ```bash
 sha256sum -c SHA256SUMS --ignore-missing      # Linux, macOS (shasum -a 256 -c on older macOS)
-Get-FileHash .\appaudit-4.4.1.plugin -Algorithm SHA256   # Windows PowerShell; compare with SHA256SUMS
+Get-FileHash .\appaudit-4.4.2.plugin -Algorithm SHA256   # Windows PowerShell; compare with SHA256SUMS
 ```
 
-From 4.4.1 the packages are reproducible: `git checkout v4.4.1` followed by
+From 4.4.1 on, the packages are reproducible: `git checkout v4.4.2` (or any later tag) followed by
 `python tools/build_dist.py` gives the same `dist/SHA256SUMS` as the release on any operating
 system (Python 3.9 or later). Files inside the packages are stored uncompressed for this reason,
 so the downloads are about 0.5 MB each.

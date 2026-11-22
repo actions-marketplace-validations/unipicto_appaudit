@@ -13,7 +13,7 @@ description: >-
   nine jurisdictions for counsel, and outputs a brief, report, findings.json, SARIF,
   register and evidence bundle.
 metadata:
-  version: "4.4.1"
+  version: "4.4.2"
   standards-checked: "2026-11-20"
 ---
 
@@ -75,8 +75,8 @@ python3 scripts/check_update.py --save .appaudit/update-check.json
 - Source: `https://github.com/unipicto/appaudit` (published `plugin.json` on the `main`
   branch). The script also warns when the standards or regulatory data in this skill is
   more than 90 days old.
-- First line examples: "appaudit 4.4.1 is up to date." · "appaudit 4.5.0 is available
-  (installed 4.4.1): see https://github.com/unipicto/appaudit/releases. Continuing with 4.4.1."
+- First line examples: "appaudit 4.4.2 is up to date." · "appaudit 4.5.0 is available
+  (installed 4.4.2): see https://github.com/unipicto/appaudit/releases. Continuing with 4.4.2."
   · "Update check not possible here (no network); check the releases page manually."
 - No shell: if you can fetch web pages, read
   `https://raw.githubusercontent.com/unipicto/appaudit/main/.claude-plugin/plugin.json` and

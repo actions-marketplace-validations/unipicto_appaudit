@@ -2,7 +2,7 @@
 
 appaudit is a security tool that runs inside an AI agent. This page states plainly what its controls
 are worth, so that nobody relies on them for more. It is the result of the project's own critical
-review (version 4.4.1); report anything it misses through [SECURITY.md](../SECURITY.md).
+review (version 4.4.2); report anything it misses through [SECURITY.md](../SECURITY.md).
 
 ## What is protected, and from what
 

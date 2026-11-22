@@ -8,7 +8,7 @@ description: >-
   says "write the report", "finish the assessment", "produce the findings report", "export
   the findings", "give me the SARIF" or "make the findings register".
 metadata:
-  version: "4.4.1"
+  version: "4.4.2"
 ---
 
 # Assessment outputs
