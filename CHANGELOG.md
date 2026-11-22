@@ -3,6 +3,20 @@
 All notable changes are listed here. Versions follow [Semantic Versioning](https://semver.org/).
 The plugin, its skills and the standalone skill share one version number from 4.2.0 on.
 
+## [4.4.2] - 2026-11-22
+
+Clearer Marketplace listing and CodeQL for this repository. No change to the plugin or skills.
+
+### Changed
+- The GitHub Action is renamed **appaudit AI agent add-on scan** (was "appaudit extension scan"),
+  so the Marketplace name says what it scans. `uses: unipicto/appaudit@v4` is unchanged.
+
+### Added
+- README: "What this Action does and does not check", and how to use it together with GitHub's
+  free CodeQL, Dependabot and secret scanning, including how to switch each on.
+- CodeQL code scanning (advanced setup, `security-extended` queries) for the Python code and the
+  GitHub Actions workflows, weekly and on every pull request; action pinned by commit SHA.
+
 ## [4.4.1] - 2026-11-22
 
 Reproducible release packages.

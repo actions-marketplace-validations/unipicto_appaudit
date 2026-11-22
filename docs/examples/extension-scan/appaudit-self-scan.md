@@ -1,6 +1,6 @@
 # Extension scan — appaudit
 
-Scanned 2026-11-22T00:55:47Z with appaudit scan_extension 1.1. Target: `appaudit-4.4.1.plugin`. Package digest (SHA-256 over all files): `5101ebdbb7aecaef64a922f0d956761de60b7de626d8838343abf9a138b38d83`.
+Scanned 2026-11-22T00:55:47Z with appaudit scan_extension 1.1. Target: `appaudit-4.4.2.plugin`. Package digest (SHA-256 over all files): `5101ebdbb7aecaef64a922f0d956761de60b7de626d8838343abf9a138b38d83`.
 
 ## Install guidance: No blocking issue found by the static scan
 

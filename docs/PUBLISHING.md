@@ -12,7 +12,7 @@
 | Security | Enable **Private vulnerability reporting**, Dependabot alerts, secret scanning and push protection |
 | Branch protection (`main`) | Require pull requests, the `ci` workflow to pass, and linear history; no force pushes |
 | Actions | Allow GitHub-owned actions; pin third-party actions to full commit SHAs |
-| Releases | Created by the `release` workflow from a full version tag (`v4.4.1`), with signed build provenance. Also move the major tag after each release so `uses: unipicto/appaudit@v4` resolves: `git tag -f v4 && git push -f origin v4` (moving `v4` does not start the release workflow) |
+| Releases | Created by the `release` workflow from a full version tag (`v4.4.2`), with signed build provenance. Also move the major tag after each release so `uses: unipicto/appaudit@v4` resolves: `git tag -f v4 && git push -f origin v4` (moving `v4` does not start the release workflow) |
 | Social preview | Settings → General → Social preview → upload `docs/assets/social-preview.png` (1280×640) |
 | Code scanning | Optional: upload `candidates.sarif` from the self-scan with `github/codeql-action/upload-sarif` |
 | Diagrams | `python3 tools/make_diagrams.py` regenerates `docs/assets/*.svg`; `rsvg-convert -w 1280 docs/assets/social-preview.svg -o docs/assets/social-preview.png` |
@@ -23,7 +23,7 @@ The Marketplace lists `action.yml` from a published release; GitHub does not rev
 two-factor authentication on the owner account and acceptance of the GitHub Marketplace Developer
 Agreement (the checkbox in the release form links to it).
 
-1. Push the tag (`git tag v4.4.1 && git push origin v4.4.1`). The `release` workflow builds the
+1. Push the tag (`git tag v4.4.2 && git push origin v4.4.2`). The `release` workflow builds the
    packages and creates a **draft** release with them.
 2. Open the draft under Releases → edit. Tick **Publish this Action to the GitHub Marketplace**,
    fix anything the form flags, choose the categories (primary: Security; second: Code quality).
@@ -46,7 +46,7 @@ for. To withdraw a version from the Marketplace, edit its release and clear the 
    claude plugin validate .claude-plugin/plugin.json
    python3 tools/build_dist.py
    ```
-4. Merge to `main`, then tag: `git tag v4.4.1 && git push origin v4.4.1`. The `release` workflow
+4. Merge to `main`, then tag: `git tag v4.4.2 && git push origin v4.4.2`. The `release` workflow
    runs the tests, builds the packages and publishes them with `SHA256SUMS` and the changelog
    entry as release notes.
 5. Users' update checks read `main`'s `.claude-plugin/plugin.json`, so they see the new version
