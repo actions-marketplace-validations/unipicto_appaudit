@@ -12,7 +12,7 @@
 | Security | Enable **Private vulnerability reporting**, Dependabot alerts, secret scanning and push protection |
 | Branch protection (`main`) | Require pull requests, the `ci` workflow to pass, and linear history; no force pushes |
 | Actions | Allow GitHub-owned actions; pin third-party actions to full commit SHAs |
-| Releases | Created by the `release` workflow from a `v*` tag, with signed build provenance. Also move the major tag after each release so `uses: unipicto/appaudit@v4` resolves: `git tag -f v4 && git push -f origin v4` |
+| Releases | Created by the `release` workflow from a full version tag (`v4.4.1`), with signed build provenance. Also move the major tag after each release so `uses: unipicto/appaudit@v4` resolves: `git tag -f v4 && git push -f origin v4` (moving `v4` does not start the release workflow) |
 | Social preview | Settings → General → Social preview → upload `docs/assets/social-preview.png` (1280×640) |
 | Code scanning | Optional: upload `candidates.sarif` from the self-scan with `github/codeql-action/upload-sarif` |
 | Diagrams | `python3 tools/make_diagrams.py` regenerates `docs/assets/*.svg`; `rsvg-convert -w 1280 docs/assets/social-preview.svg -o docs/assets/social-preview.png` |
