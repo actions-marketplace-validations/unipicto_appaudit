@@ -7,7 +7,7 @@ description: >-
   when the user runs /appaudit:retest or says "re-test", "verify the fixes", "compare with
   the last assessment", "what changed since the previous report", or "close out findings".
 metadata:
-  version: "4.4.0"
+  version: "4.4.1"
 ---
 
 # Re-test comparison

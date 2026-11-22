@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""appaudit test suite: hooks, evidence chain, output builder, merge, re-test, schema, extension scanner.
+"""appaudit test suite: hooks, evidence chain, output builder, merge, re-test, schema, extension scanner,
+reproducible release build.
 
 Run from anywhere:  python3 tests/run_tests.py
 Standard library only (the JSON Schema check runs only if `jsonschema` is installed).
@@ -518,6 +519,47 @@ def test_scripts_start():
         check(f"starts: {name} --help", r.returncode == 0, r.stderr[-200:])
 
 
+def test_reproducible_build():
+    """Release packages must be byte-identical on every OS and Python version (SHA256SUMS is the reference)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("build_dist", ROOT / "tools" / "build_dist.py")
+    bd = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bd)
+    with tempfile.TemporaryDirectory() as tmp:
+        t = Path(tmp)
+        lf = [("a/x.md", b"one\ntwo\n"), ("a/y.py", b"print(1)\n"), ("a/z.png", b"\x89PNG\r\n\x1a\n")]
+        crlf = [(a, d.replace(b"\n", b"\r\n") if not a.endswith(".png") else d) for a, d in reversed(lf)]
+        bd.write_zip(t / "lf.zip", lf)
+        bd.write_zip(t / "crlf.zip", crlf)
+        check("build: CRLF input and other entry order give identical bytes",
+              (t / "lf.zip").read_bytes() == (t / "crlf.zip").read_bytes())
+        with zipfile.ZipFile(t / "lf.zip") as z:
+            infos = z.infolist()
+            check("build: entries stored, not deflated (zlib builds differ)",
+                  all(i.compress_type == zipfile.ZIP_STORED for i in infos))
+            check("build: fixed Unix origin, time and permissions",
+                  all(i.create_system == 3 and i.date_time == bd.FIXED_TIME for i in infos)
+                  and (z.getinfo("a/y.py").external_attr >> 16) == 0o755)
+            check("build: binary file left untouched", z.read("a/z.png") == lf[2][1])
+        # Full build from a CRLF copy of the repository must give the same SHA256SUMS as from the LF original.
+        copy = t / "crlf-repo"
+        shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", ".appaudit"))
+        for f in copy.rglob("*"):
+            if f.is_file() and f.suffix.lower() not in bd.BINARY_SUFFIXES:
+                data = f.read_bytes()
+                if b"\0" not in data:
+                    f.write_bytes(data.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
+        a = py(ROOT / "tools" / "build_dist.py", "--skip-check", "--out", t / "out-lf")
+        b = py(copy / "tools" / "build_dist.py", "--skip-check", "--out", t / "out-crlf")
+        ok = a.returncode == 0 and b.returncode == 0
+        check("build: both builds succeed", ok, (a.stderr + b.stderr)[-300:])
+        if ok:
+            s1 = (t / "out-lf" / "SHA256SUMS").read_bytes()
+            s2 = (t / "out-crlf" / "SHA256SUMS").read_bytes()
+            check("build: LF and CRLF checkouts give identical SHA256SUMS", s1 == s2, f"{s1!r} vs {s2!r}")
+            check("build: SHA256SUMS uses LF line endings", b"\r" not in s1)
+
+
 def test_manifests():
     for p in [ROOT / ".claude-plugin/plugin.json", ROOT / ".claude-plugin/marketplace.json",
               ROOT / "hooks/hooks.json", ROOT / "skills/scope/references/scope-template.json"]:
@@ -536,5 +578,6 @@ if __name__ == "__main__":
     test_outputs()
     test_scan_extension()
     test_schema()
+    test_reproducible_build()
     print(f"\n{'ALL PASSED' if not FAILS else str(len(FAILS)) + ' FAILED: ' + ', '.join(FAILS)}")
     sys.exit(1 if FAILS else 0)

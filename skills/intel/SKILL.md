@@ -6,7 +6,7 @@ description: >-
   user runs /appaudit:intel, asks "is CVE-… exploited", "check these CVEs", "KEV status",
   "EPSS score for…", or when an appaudit assessment needs exploit data for components found.
 metadata:
-  version: "4.4.0"
+  version: "4.4.1"
 ---
 
 # CVE threat intelligence

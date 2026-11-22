@@ -3,6 +3,27 @@
 All notable changes are listed here. Versions follow [Semantic Versioning](https://semver.org/).
 The plugin, its skills and the standalone skill share one version number from 4.2.0 on.
 
+## [4.4.1] - 2026-11-22
+
+Reproducible release packages.
+
+### Fixed
+- **Release packages differed between machines.** The same commit gave different SHA-256 hashes
+  on the GitHub runner and on other computers, although the files inside were identical, because
+  deflate output depends on the zlib build (classic zlib or zlib-ng). Packages now store their
+  files uncompressed, record a fixed Unix origin, and normalise text files to LF line endings.
+  The same commit now gives byte-identical packages on Linux, macOS and Windows with Python 3.9 to
+  3.13. Downloads grow from about 0.2 MB to about 0.5 MB each.
+- **Windows-only build bug.** On a checkout with CRLF line endings, the standalone skill kept the
+  name `assess` instead of `appaudit`, because the rename did not match a line ending in `\r`.
+- `SHA256SUMS` is written with LF line endings on every operating system.
+
+### Added
+- CI job `reproducible`: builds the packages on Ubuntu, Windows and macOS with several Python
+  versions and fails if any `SHA256SUMS` differs.
+- Tests for the package writer, including a full build from a CRLF copy of the repository.
+- `SECURITY.md` and the user manual explain how to rebuild a release and compare hashes.
+
 ## [4.4.0] - 2026-11-22
 
 Result of a critical pre-publication review. First version published on GitHub.

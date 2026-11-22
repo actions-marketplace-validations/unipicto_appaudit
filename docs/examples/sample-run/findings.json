@@ -254,7 +254,7 @@
   },
   "tool": {
     "name": "appaudit",
-    "version": "4.4.0",
+    "version": "4.4.1",
     "standards_checked": "2026-11-20",
     "regulatory_checked": "2026-11-20",
     "built_at": "2026-11-21T23:54:53Z"

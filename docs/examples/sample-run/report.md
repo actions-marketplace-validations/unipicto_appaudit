@@ -1,6 +1,6 @@
 # Security Assessment — example-webshop-2026-11
 
-**Date:** 2026-11-20  **Assessor:** Claude (appaudit) + operator  **Tool:** appaudit 4.4.0 (standards checked 2026-11-20, regulatory data checked 2026-11-20)
+**Date:** 2026-11-20  **Assessor:** Claude (appaudit) + operator  **Tool:** appaudit 4.4.1 (standards checked 2026-11-20, regulatory data checked 2026-11-20)
 
 ## 1. Executive summary
 

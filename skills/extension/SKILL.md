@@ -10,7 +10,7 @@ description: >-
   "audit my MCP servers", "check my installed plugins", "is this browser extension safe" or
   "what changed in this plugin update".
 metadata:
-  version: "4.4.0"
+  version: "4.4.1"
 ---
 
 # Extension review

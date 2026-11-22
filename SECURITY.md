@@ -41,4 +41,10 @@ before installing it:
 
 ```bash
 sha256sum -c SHA256SUMS --ignore-missing
+gh attestation verify appaudit-*.plugin --repo unipicto/appaudit   # signed build provenance
 ```
+
+The build is reproducible: the same commit gives byte-identical packages on Linux, macOS and
+Windows with Python 3.9 or later, and CI checks this on every push. To confirm that a release was
+built from the published source, check out its tag, run `python tools/build_dist.py` and compare
+`dist/SHA256SUMS` with the release's `SHA256SUMS`. They must match exactly.
