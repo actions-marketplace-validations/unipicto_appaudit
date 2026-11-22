@@ -1,4 +1,4 @@
-name: "appaudit extension scan"
+name: "appaudit AI agent add-on scan"
 description: "Offline security scan of Claude plugins, Agent Skills and MCP configs: capabilities report, SARIF, severity gate."
 author: "UniPicto"
 branding:
