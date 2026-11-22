@@ -60,3 +60,44 @@ jobs:
           name: appaudit
           fail-on: Low
           ignore-file: .github/appaudit-ignore.json
+
+  reproducible:
+    name: release packages are byte-identical (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, python: "3.13" }
+          - { os: ubuntu-latest, python: "3.11" }
+          - { os: windows-latest, python: "3.13" }
+          - { os: windows-latest, python: "3.9" }
+          - { os: macos-latest, python: "3.13" }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Build packages
+        run: python tools/build_dist.py --skip-check
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sums-${{ matrix.os }}-${{ matrix.python }}
+          path: dist/SHA256SUMS
+
+  compare-builds:
+    name: compare SHA256SUMS across all builds
+    needs: reproducible
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: sums-*
+          path: sums
+      - name: Every OS and Python version must produce the same hashes
+        run: |
+          for f in sums/*/SHA256SUMS; do echo "== $f"; cat "$f"; done
+          n=$(cat sums/*/SHA256SUMS | sort -u | wc -l)
+          test "$n" -eq 3 || { echo "::error::Builds differ between platforms"; exit 1; }

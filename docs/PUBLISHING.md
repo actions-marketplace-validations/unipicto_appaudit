@@ -23,7 +23,7 @@ The Marketplace lists `action.yml` from a published release; GitHub does not rev
 two-factor authentication on the owner account and acceptance of the GitHub Marketplace Developer
 Agreement (the checkbox in the release form links to it).
 
-1. Push the tag (`git tag v4.4.0 && git push origin v4.4.0`). The `release` workflow builds the
+1. Push the tag (`git tag v4.4.1 && git push origin v4.4.1`). The `release` workflow builds the
    packages and creates a **draft** release with them.
 2. Open the draft under Releases → edit. Tick **Publish this Action to the GitHub Marketplace**,
    fix anything the form flags, choose the categories (primary: Security; second: Code quality).
@@ -46,7 +46,7 @@ for. To withdraw a version from the Marketplace, edit its release and clear the 
    claude plugin validate .claude-plugin/plugin.json
    python3 tools/build_dist.py
    ```
-4. Merge to `main`, then tag: `git tag v4.4.0 && git push origin v4.4.0`. The `release` workflow
+4. Merge to `main`, then tag: `git tag v4.4.1 && git push origin v4.4.1`. The `release` workflow
    runs the tests, builds the packages and publishes them with `SHA256SUMS` and the changelog
    entry as release notes.
 5. Users' update checks read `main`'s `.claude-plugin/plugin.json`, so they see the new version

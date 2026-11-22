@@ -8,7 +8,7 @@ agent, flags regulatory deadlines in 9 jurisdictions, and delivers six audit-rea
 every run.
 
 [![ci](https://github.com/unipicto/appaudit/actions/workflows/ci.yml/badge.svg)](https://github.com/unipicto/appaudit/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-4.4.0-blue)
+![version](https://img.shields.io/badge/version-4.4.1-blue)
 ![license](https://img.shields.io/badge/license-Apache--2.0-green)
 
 > Use appaudit only on systems you own or have the owner's **written** permission to test.

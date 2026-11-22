@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the appaudit release packages into dist/ (reproducible: fixed timestamps, sorted).
+"""Build the appaudit release packages into dist/ (reproducible: byte-identical on every OS and Python version).
 
   python3 tools/build_dist.py [--out dist]
 
@@ -44,14 +44,30 @@ def files_under(path: Path):
             yield p
 
 
+# Reproducible packages: the same commit gives byte-identical files on every OS and Python version.
+# - Entries are STORED, not deflated: deflate output depends on the zlib build (classic zlib on the
+#   GitHub runner, zlib-ng in many Python 3.13+ builds), so compressed bytes differ for identical files.
+# - Fixed timestamp, sorted names, fixed permissions and a fixed "created on Unix" marker.
+# - Text files are normalised to LF line endings, so a Windows checkout with CRLF gives the same bytes.
+BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".ico", ".pdf", ".zip", ".xlsx", ".docx", ".gz", ".woff", ".woff2"}
+
+
+def normalise(arc: str, data: bytes) -> bytes:
+    if Path(arc).suffix.lower() in BINARY_SUFFIXES or b"\0" in data:
+        return data
+    return data.replace(b"\r\n", b"\n")
+
+
 def write_zip(target: Path, entries) -> None:
     """entries: iterable of (arcname, bytes)."""
-    with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+    with zipfile.ZipFile(target, "w", zipfile.ZIP_STORED) as z:
         for arc, data in sorted(entries, key=lambda e: e[0]):
             info = zipfile.ZipInfo(arc, FIXED_TIME)
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.compress_type = zipfile.ZIP_STORED
+            info.create_system = 3                      # Unix, whatever OS builds the package
+            info.create_version = info.extract_version = 20
             info.external_attr = (0o755 if arc.endswith(".py") else 0o644) << 16
-            z.writestr(info, data)
+            z.writestr(info, normalise(arc, data))
 
 
 def plugin_entries():
@@ -63,7 +79,7 @@ def plugin_entries():
 def skill_entries(version: str):
     for p in files_under(ASSESS):
         rel = p.relative_to(ASSESS).as_posix()
-        data = p.read_bytes()
+        data = normalise(rel, p.read_bytes())   # before the rename below: `$` must not meet a `\r`
         if rel == "SKILL.md":
             text = data.decode("utf-8")
             text = re.sub(r"^name: assess$", "name: appaudit", text, count=1, flags=re.M)
@@ -145,7 +161,7 @@ def main() -> int:
         digest = hashlib.sha256(target.read_bytes()).hexdigest()
         sums.append(f"{digest}  {target.name}")
         print(f"{digest}  {target.name}  ({target.stat().st_size:,} bytes)")
-    (out / "SHA256SUMS").write_text("\n".join(sums) + "\n", encoding="utf-8")
+    (out / "SHA256SUMS").write_bytes(("\n".join(sums) + "\n").encode("utf-8"))
     return 0
 
 

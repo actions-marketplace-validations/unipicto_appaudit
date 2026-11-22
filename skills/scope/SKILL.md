@@ -7,7 +7,7 @@ description: >-
   "add this host to scope", "show the scope", "close the engagement", and before any active
   security test with the appaudit plugin.
 metadata:
-  version: "4.4.0"
+  version: "4.4.1"
 ---
 
 # Engagement scope

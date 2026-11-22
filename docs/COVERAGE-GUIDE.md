@@ -1,6 +1,6 @@
 # Coverage guide — what appaudit checks, and how to run it for each product
 
-Version 4.4.0. This guide answers three questions for every kind of product appaudit covers:
+Version 4.4.1. This guide answers three questions for every kind of product appaudit covers:
 **what is checked**, **what you provide**, and **how to start**. For installation and the outputs
 see the [user manual](USER-MANUAL.md); for the architecture see [HOW-IT-WORKS.md](HOW-IT-WORKS.md).
 

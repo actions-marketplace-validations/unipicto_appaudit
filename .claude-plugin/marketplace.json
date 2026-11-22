@@ -11,7 +11,7 @@
     {
       "name": "appaudit",
       "source": "./",
-      "version": "4.4.0",
+      "version": "4.4.1",
       "description": "Non-destructive security assessments for systems you own or have the owner's written permission to test: web apps, APIs, mobile/IoT apps, firmware, AI agents, and plugins, skills and MCP servers before you install them. Enforced scope, hash-chained evidence, independent verification, regulatory flags for 9 jurisdictions, six audit-ready outputs. Not a certification.",
       "author": {
         "name": "UniPicto"
