@@ -33,7 +33,7 @@ jobs:
           subject-path: |
             dist/*.plugin
             dist/*.zip
-      - name: Publish GitHub release with packages and hashes
+      - name: Draft GitHub release with packages and hashes (review it, then publish in the web UI)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -44,4 +44,4 @@ jobs:
           m=re.search(r'## \['+re.escape(v)+r'\][^\n]*\n(.*?)(?=\n## \[|\Z)',t,re.S)
           print(m.group(1).strip() if m else 'See CHANGELOG.md')
           PY
-          gh release create "${GITHUB_REF_NAME}" dist/* --title "appaudit ${GITHUB_REF_NAME}" --notes-file notes.md
+          gh release create "${GITHUB_REF_NAME}" dist/* --draft --verify-tag --title "appaudit ${GITHUB_REF_NAME}" --notes-file notes.md

@@ -36,7 +36,9 @@ Result of a critical pre-publication review. First version published on GitHub.
   repository with it.
 - Evidence anchoring: `verify_evidence.py --expect-head`; closing an engagement tells the user to
   send the head hash to the client.
-- Release packages carry signed build provenance (`gh attestation verify`).
+- Release packages carry signed build provenance (`gh attestation verify`). The release workflow
+  creates a draft release, to be reviewed and published (and listed in the GitHub Marketplace) by
+  the maintainer.
 - `docs/THREAT-MODEL.md` (what appaudit protects against, what it does not, known bypasses) and
   diagrams in `docs/assets/`.
 

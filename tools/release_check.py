@@ -76,6 +76,11 @@ def skill_metadata() -> list:
             n = len(str(entry.get("description", "")))
             if n > PLUGIN_DESCRIPTION_MAX:
                 problems.append(f"{mf}: plugin description has {n} characters (maximum {PLUGIN_DESCRIPTION_MAX})")
+    action = ROOT / "action.yml"
+    if action.exists():
+        m = re.search(r'^description:\s*"?(.*?)"?\s*$', action.read_text(encoding="utf-8"), re.M)
+        if m and len(m.group(1)) >= 125:
+            problems.append(f"action.yml: description has {len(m.group(1))} characters (GitHub Marketplace asks for fewer than 125)")
     return sorted(set(problems))
 
 
