@@ -1,0 +1,5 @@
+# Same bytes on every platform: hashes in SHA256SUMS and MANIFEST.sha256 depend on it.
+* text=auto eol=lf
+*.png binary
+*.xlsx binary
+*.zip binary
