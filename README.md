@@ -117,6 +117,36 @@ on Windows. Install the plugin **or** the skill in one app, not both.
 
 What each product type needs and how to start: [coverage guide](docs/COVERAGE-GUIDE.md).
 
+## Use in GitHub Actions
+
+The extension scanner also runs as a GitHub Action. It reads the files only: nothing from the scanned
+folder is executed, and nothing is sent anywhere.
+
+```yaml
+permissions:
+  contents: read
+steps:
+  - uses: actions/checkout@v7
+  - uses: unipicto/appaudit@v4          # pin to a commit SHA in production
+    with:
+      path: .                           # a plugin, a skill folder or a whole repository
+      fail-on: High                     # Critical, High, Medium, Low, Informational or none
+```
+
+| Input | Default | Meaning |
+|-------|---------|---------|
+| `path` | `.` | Folder or archive to scan |
+| `name` | `extension` | Short name used in the report |
+| `fail-on` | `High` | Fail the step at or above this severity; `none` never fails |
+| `baseline` | | `inventory.json` of the version you reviewed before: flags new hosts, new automatic commands, changed instructions |
+| `ignore-file` | | JSON list of accepted candidates, each `{rule, path, reason}` |
+| `output-dir` | runner temp | Where `capabilities.md`, `inventory.json`, `candidates.json` and `candidates.sarif` are written |
+
+Outputs: `decision` (`no_blocking_issue_found`, `review_first`, `do_not_install_yet`) and `sarif` (path of the SARIF
+file, for `github/codeql-action/upload-sarif`). The capabilities table appears in the job summary. The rules are listed in
+[module-agent-extensions.md](skills/assess/references/module-agent-extensions.md); a clean result means no
+blocking issue was found by static review, not that the code is safe.
+
 ## Components
 
 | Type | Name | Purpose |

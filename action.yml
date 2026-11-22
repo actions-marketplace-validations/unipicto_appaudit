@@ -1,5 +1,5 @@
 name: "appaudit extension scan"
-description: "Offline security scan of AI-agent extensions (Claude plugins, Agent Skills, MCP configs, hooks, rules files) with a capabilities report, SARIF and a severity gate. Never runs the scanned code."
+description: "Offline security scan of Claude plugins, Agent Skills and MCP configs: capabilities report, SARIF, severity gate."
 author: "UniPicto"
 branding:
   icon: "shield"
