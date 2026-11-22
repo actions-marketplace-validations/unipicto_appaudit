@@ -1,0 +1,21 @@
+{
+  "checked_on": "2026-11-21",
+  "installed": "4.4.0",
+  "latest": null,
+  "source": "https://raw.githubusercontent.com/unipicto/appaudit/main/.claude-plugin/plugin.json",
+  "repository": "https://github.com/unipicto/appaudit",
+  "status": "not_published",
+  "data_checked": {
+    "standards": "2026-11-20",
+    "regulatory": "2026-11-20"
+  },
+  "data_age_days": {
+    "standards": 1,
+    "regulatory": 1
+  },
+  "stale_data": false,
+  "advice": [
+    "Update source answered HTTP 404."
+  ],
+  "summary": "No published appaudit version found at the update source; installed 4.4.0. See https://github.com/unipicto/appaudit/releases."
+}

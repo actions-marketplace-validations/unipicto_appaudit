@@ -1,0 +1,47 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # create the GitHub release
+      id-token: write        # sign the build provenance
+      attestations: write    # store the build provenance
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: python tests/run_tests.py
+      - run: python tools/build_dist.py
+      - name: Check tag matches plugin version
+        run: |
+          v=$(python -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          test "v$v" = "${GITHUB_REF_NAME}"
+      - name: "Build provenance (verify: gh attestation verify FILE --repo unipicto/appaudit)"
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: |
+            dist/*.plugin
+            dist/*.zip
+      - name: Publish GitHub release with packages and hashes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - > notes.md <<'PY'
+          import re,json
+          v=json.load(open('.claude-plugin/plugin.json'))['version']
+          t=open('CHANGELOG.md',encoding='utf-8').read()
+          m=re.search(r'## \['+re.escape(v)+r'\][^\n]*\n(.*?)(?=\n## \[|\Z)',t,re.S)
+          print(m.group(1).strip() if m else 'See CHANGELOG.md')
+          PY
+          gh release create "${GITHUB_REF_NAME}" dist/* --title "appaudit ${GITHUB_REF_NAME}" --notes-file notes.md

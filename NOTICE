@@ -1,0 +1,17 @@
+appaudit
+Copyright 2026 UniPicto
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+appaudit refers to, but does not include, standards and catalogues published by third
+parties, among them OWASP (Top 10, ASVS, API Security Top 10, MASVS/MASTG/MASWE, ISVS,
+Top 10 for LLM Applications, Top 10 for Agentic Applications, Agentic Skills Top 10, AIVSS),
+FIRST (CVSS, EPSS), CISA (KEV, SSVC, binding operational directives), NIST, MITRE (CWE,
+ATLAS), ETSI, CEN/CENELEC, ISO/IEC, OASIS (SARIF, CSAF), ECMA (CycloneDX), PCI SSC, the
+Center for Internet Security, and the legislators and regulators named in
+skills/assess/references/regulatory/. Their names and marks belong to their owners. Titles
+and identifiers are cited for reference; consult the original publications for their text
+and terms of use.
+
+The regulatory files summarize legal obligations for orientation only. They are not legal
+advice and may be out of date; the official texts prevail.

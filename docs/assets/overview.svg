@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">appaudit overview</title><desc id="d">What you give appaudit, what it does, and what you get back.</desc>
+<defs><marker id="a334155" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="a1D4ED8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D4ED8"/></marker><marker id="a0F766E" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/></marker><marker id="a6D28D9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6D28D9"/></marker><marker id="aB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="aB42318" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B42318"/></marker><marker id="a15803D" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803D"/></marker></defs>
+<rect width="1200" height="600" rx="16" fill="#F8FAFC" stroke="#CBD5E1"/>
+<text x="36" y="48" font-size="24" font-weight="800" fill="#0F172A" text-anchor="start">appaudit at a glance</text>
+<text x="36" y="74" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Non-destructive security assessments with Claude, for systems you own or have the owner&#x27;s written permission to test</text>
+<text x="36" y="122" font-size="12" font-weight="700" fill="#1D4ED8" text-anchor="start">WHAT YOU GIVE IT</text>
+<rect x="36" y="138" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="138" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="163" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">Web apps and APIs</text>
+<rect x="36" y="188" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="188" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="213" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">Dependencies, CI/CD, infrastructure code</text>
+<rect x="36" y="238" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="238" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="263" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">Mobile and smart-device apps</text>
+<rect x="36" y="288" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="288" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="313" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">Firmware images</text>
+<rect x="36" y="338" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="338" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="363" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">AI features and agents</text>
+<rect x="36" y="388" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="388" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="413" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">Plugins, skills, MCP servers</text>
+<rect x="36" y="438" width="300" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="438" width="5" height="40" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="463" font-size="14" font-weight="500" fill="#0F172A" text-anchor="start">Rules files, browser extensions</text>
+<text x="36" y="502" font-size="12" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Source code, packages or a live staging system</text>
+<text x="392" y="122" font-size="12" font-weight="700" fill="#0F766E" text-anchor="start">WHAT IT DOES</text>
+<rect x="392" y="138" width="400" height="58" rx="10" fill="#F1F5F9" stroke="#334155" stroke-width="1.4"/>
+<circle cx="422" cy="167" r="15" fill="#334155"/>
+<text x="422" y="172" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">0</text>
+<text x="448" y="163" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Update check</text>
+<text x="448" y="182" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">Tells you first if a newer release exists</text>
+<line x1="592" y1="196" x2="592" y2="206" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<rect x="392" y="206" width="400" height="58" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.4"/>
+<circle cx="422" cy="235" r="15" fill="#B45309"/>
+<text x="422" y="240" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="448" y="231" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Permission and scope</text>
+<text x="448" y="250" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">You record the owner&#x27;s permission, hosts, window</text>
+<line x1="592" y1="264" x2="592" y2="274" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<rect x="392" y="274" width="400" height="58" rx="10" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.4"/>
+<circle cx="422" cy="303" r="15" fill="#1D4ED8"/>
+<text x="422" y="308" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="448" y="299" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Parallel review</text>
+<text x="448" y="318" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">Six read-only specialist agents and an offline scanner</text>
+<line x1="592" y1="332" x2="592" y2="342" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<rect x="392" y="342" width="400" height="58" rx="10" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.4"/>
+<circle cx="422" cy="371" r="15" fill="#0F766E"/>
+<text x="422" y="376" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="448" y="367" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Validation and scoring</text>
+<text x="448" y="386" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">Benign proofs in scope; CVSS v4.0, SSVC, EPSS, KEV</text>
+<line x1="592" y1="400" x2="592" y2="410" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<rect x="392" y="410" width="400" height="58" rx="10" fill="#F5F3FF" stroke="#6D28D9" stroke-width="1.4"/>
+<circle cx="422" cy="439" r="15" fill="#6D28D9"/>
+<text x="422" y="444" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="448" y="435" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Independent verification</text>
+<text x="448" y="454" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">A separate agent re-checks every finding</text>
+<line x1="592" y1="468" x2="592" y2="478" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<rect x="392" y="478" width="400" height="58" rx="10" fill="#FEF2F2" stroke="#B42318" stroke-width="1.4"/>
+<circle cx="422" cy="507" r="15" fill="#B42318"/>
+<text x="422" y="512" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="448" y="503" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Regulatory flags</text>
+<text x="448" y="522" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">9 jurisdictions; client or counsel decides</text>
+<text x="848" y="122" font-size="12" font-weight="700" fill="#6D28D9" text-anchor="start">WHAT YOU GET, EVERY RUN</text>
+<rect x="848" y="138" width="316" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="848" y="138" width="5" height="50" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="866" y="160" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">brief.md</text>
+<text x="866" y="178" font-size="12" font-weight="400" fill="#475569" text-anchor="start">one page for management and counsel</text>
+<rect x="848" y="196" width="316" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="848" y="196" width="5" height="50" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="866" y="218" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">report.md</text>
+<text x="866" y="236" font-size="12" font-weight="400" fill="#475569" text-anchor="start">proof, root cause, fix, re-test</text>
+<rect x="848" y="254" width="316" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="848" y="254" width="5" height="50" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="866" y="276" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">findings.json</text>
+<text x="866" y="294" font-size="12" font-weight="400" fill="#475569" text-anchor="start">single source of truth</text>
+<rect x="848" y="312" width="316" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="848" y="312" width="5" height="50" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="866" y="334" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">findings.sarif</text>
+<text x="866" y="352" font-size="12" font-weight="400" fill="#475569" text-anchor="start">CI and code scanning</text>
+<rect x="848" y="370" width="316" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="848" y="370" width="5" height="50" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="866" y="392" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">findings-register.xlsx</text>
+<text x="866" y="410" font-size="12" font-weight="400" fill="#475569" text-anchor="start">owners, due dates, status</text>
+<rect x="848" y="428" width="316" height="50" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="848" y="428" width="5" height="50" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="866" y="450" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">evidence-bundle.zip</text>
+<text x="866" y="468" font-size="12" font-weight="400" fill="#475569" text-anchor="start">hashes for auditors</text>
+<text x="848" y="498" font-size="12" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Extension reviews add an install decision,</text>
+<text x="848" y="515" font-size="12" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">a capabilities table and a baseline.</text>
+<line x1="340" y1="330" x2="386" y2="330" stroke="#1D4ED8" stroke-width="1.8" marker-end="url(#a1D4ED8)"/>
+<line x1="796" y1="330" x2="842" y2="330" stroke="#6D28D9" stroke-width="1.8" marker-end="url(#a6D28D9)"/>
+<rect x="392" y="556" width="400" height="28" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="592" y="575" font-size="12.5" font-weight="600" fill="#334155" text-anchor="middle">Not a certification. Not legal advice. Not a sandbox.</text>
+<text x="1170" y="582" font-size="11" font-weight="400" fill="#94A3B8" text-anchor="end">github.com/unipicto/appaudit</text>
+</svg>

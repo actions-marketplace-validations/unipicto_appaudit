@@ -1,0 +1,73 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "appaudit",
+          "version": "4.4.0",
+          "rules": [
+            {
+              "id": "AA-001",
+              "name": "OrderDetailsOfOtherCustomersReadableByChangingTheOrderIdBola",
+              "shortDescription": {
+                "text": "Order details of other customers readable by changing the order ID (BOLA)"
+              },
+              "fullDescription": {
+                "text": "GET /api/orders/{id} returns any order to any logged-in user."
+              },
+              "help": {
+                "text": "Scope the query by the caller's user ID."
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-639",
+                  "API1:2023",
+                  "A01:2025"
+                ],
+                "precision": "high"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "AA-001",
+          "level": "error",
+          "message": {
+            "text": "Order details of other customers readable by changing the order ID (BOLA). Any customer can read every other customer's name, address and order history."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/api/orders.ts"
+                },
+                "region": {
+                  "startLine": 42,
+                  "endLine": 51
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "appauditFinding/v1": "ae4c9722b328e89825f128671e656379f61ae49e734130d7423483f30aea2ea7"
+          },
+          "properties": {
+            "confidence": "Confirmed",
+            "ssvc": "Attend",
+            "kev": false,
+            "status": "open"
+          }
+        }
+      ],
+      "properties": {
+        "engagement": "example-webshop-2026-11",
+        "non_code_findings_not_in_sarif": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/unipicto/appaudit/main/skills/assess/references/findings.schema.json",
+  "title": "appaudit findings.json (appaudit-findings/1)",
+  "type": "object",
+  "required": [
+    "schema",
+    "engagement",
+    "findings"
+  ],
+  "properties": {
+    "schema": {
+      "const": "appaudit-findings/1"
+    },
+    "engagement": {
+      "type": "object",
+      "required": [
+        "name",
+        "date",
+        "authorization",
+        "mode"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "client": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "assessor": {
+          "type": "string"
+        },
+        "authorization": {
+          "type": "object",
+          "required": [
+            "basis"
+          ],
+          "properties": {
+            "basis": {
+              "enum": [
+                "owner",
+                "signed-scope",
+                "rules-of-engagement",
+                "bug-bounty",
+                "obtained-copy",
+                "none"
+              ],
+              "description": "obtained-copy = static review of a copy of a distributed artifact (an extension, app or firmware image) without testing any system"
+            },
+            "reference": {
+              "type": "string"
+            }
+          }
+        },
+        "mode": {
+          "enum": [
+            "static",
+            "active"
+          ]
+        },
+        "window": {
+          "type": "object"
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "in": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "out": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "capabilities_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "threat_intel_refreshed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jurisdiction_profile": {
+          "type": "object"
+        },
+        "jurisdictions_assessed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "jurisdictions_not_assessed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "not_tested": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "posture": {
+          "enum": [
+            "Critical",
+            "High",
+            "Medium",
+            "Low"
+          ]
+        },
+        "assessor_summary": {
+          "type": "string"
+        },
+        "decisions_needed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "install_decision": {
+          "type": "object",
+          "required": [
+            "decision"
+          ],
+          "properties": {
+            "decision": {
+              "enum": [
+                "do_not_install",
+                "install_with_conditions",
+                "no_blocking_issue_found"
+              ]
+            },
+            "reason": {
+              "type": "string"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "verified_not_applicable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "raw_location": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "secrets_found": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rotation_recommended_for": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tool": {
+      "type": "object"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Supporting files added by build_outputs.py --attach"
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "severity",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "enum": [
+            "Critical",
+            "High",
+            "Medium",
+            "Low",
+            "Informational"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "Confirmed",
+            "Likely",
+            "Informational"
+          ]
+        },
+        "verifier": {
+          "type": "object",
+          "properties": {
+            "verdict": {
+              "enum": [
+                "Confirmed",
+                "Likely",
+                "Needs evidence",
+                "Rejected"
+              ]
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "enum": [
+            "open",
+            "fixed",
+            "risk_accepted",
+            "false_positive"
+          ]
+        },
+        "asset": {
+          "type": "string"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "file",
+                "url",
+                "host",
+                "binary",
+                "prompt",
+                "config",
+                "other"
+              ]
+            },
+            "uri": {
+              "type": "string"
+            },
+            "start_line": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "end_line": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": {
+              "type": "string"
+            }
+          },
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "file"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "uri"
+            ]
+          }
+        },
+        "cwe": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CWE-[0-9]+$"
+          }
+        },
+        "owasp": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "asvs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "opencre": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cve": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CVE-[0-9]{4}-[0-9]{4,}$"
+          }
+        },
+        "cvss_v4": {
+          "type": "object",
+          "properties": {
+            "nomenclature": {
+              "enum": [
+                "CVSS-B",
+                "CVSS-BT",
+                "CVSS-BE",
+                "CVSS-BTE"
+              ]
+            },
+            "vector": {
+              "type": "string",
+              "pattern": "^CVSS:4\\.0/"
+            },
+            "score": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 10
+            },
+            "calculator_url": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "ssvc": {
+          "type": "object",
+          "properties": {
+            "exploitation": {
+              "enum": [
+                "none",
+                "public_poc",
+                "active"
+              ]
+            },
+            "automatable": {
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "technical_impact": {
+              "enum": [
+                "partial",
+                "total"
+              ]
+            },
+            "mission_wellbeing": {
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ]
+            },
+            "decision": {
+              "enum": [
+                "Track",
+                "Track*",
+                "Attend",
+                "Act"
+              ]
+            }
+          }
+        },
+        "epss": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "probability": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "percentile": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "date": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            }
+          }
+        },
+        "kev": {
+          "type": "object",
+          "properties": {
+            "listed": {
+              "type": "boolean"
+            },
+            "date_added": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "due_date": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "root_cause": {
+          "type": "string"
+        },
+        "impact": {
+          "type": "string"
+        },
+        "proof_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remediation": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "patch": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            },
+            "regression_note": {
+              "type": "string"
+            }
+          }
+        },
+        "retest": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string"
+            },
+            "expected": {
+              "type": "string"
+            },
+            "result": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            }
+          }
+        },
+        "timeline": {
+          "type": "object",
+          "properties": {
+            "basis": {
+              "type": "string"
+            },
+            "due": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        "owner": {
+          "type": "string"
+        },
+        "regulatory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/flag"
+          }
+        },
+        "disclosure": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "channel": {
+                "type": "string"
+              },
+              "deadline": {
+                "type": "string"
+              },
+              "conflict": {
+                "type": "string"
+              },
+              "decided_by": {
+                "const": "client/counsel"
+              }
+            }
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "log_seq": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "merge_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rule": {
+          "type": "string",
+          "description": "Detection rule that produced the candidate (e.g. EXT-I02 from scan_extension.py)"
+        }
+      }
+    },
+    "flag": {
+      "type": "object",
+      "required": [
+        "jurisdiction",
+        "instrument",
+        "tier",
+        "basis",
+        "decided_by"
+      ],
+      "properties": {
+        "jurisdiction": {
+          "type": "string"
+        },
+        "instrument": {
+          "type": "string"
+        },
+        "provision": {
+          "type": "string"
+        },
+        "tier": {
+          "enum": [
+            "may_trigger_now",
+            "readiness"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deadline": {
+          "type": "string"
+        },
+        "clock_start": {
+          "type": "string"
+        },
+        "authority": {
+          "type": "string"
+        },
+        "decided_by": {
+          "const": "client/counsel"
+        },
+        "source": {
+          "type": "string"
+        },
+        "source_checked": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}

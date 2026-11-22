@@ -1,0 +1,67 @@
+name: "appaudit extension scan"
+description: "Offline security scan of AI-agent extensions (Claude plugins, Agent Skills, MCP configs, hooks, rules files) with a capabilities report, SARIF and a severity gate. Never runs the scanned code."
+author: "UniPicto"
+branding:
+  icon: "shield"
+  color: "blue"
+inputs:
+  path:
+    description: "Folder or archive to scan (a plugin, a skill folder, a repository)"
+    required: false
+    default: "."
+  name:
+    description: "Short name used in the report"
+    required: false
+    default: "extension"
+  fail-on:
+    description: "Fail the step when a candidate at or above this severity exists: Critical, High, Medium, Low, Informational, or none"
+    required: false
+    default: "High"
+  baseline:
+    description: "inventory.json of the version reviewed before (flags new hosts, new automatic execution, changed instructions)"
+    required: false
+    default: ""
+  ignore-file:
+    description: "JSON list of accepted candidates ({rule, path, reason}). Use only a file you wrote yourself"
+    required: false
+    default: ""
+  output-dir:
+    description: "Where the reports are written (default: a folder in the runner's temporary directory; must be outside the scanned path)"
+    required: false
+    default: ""
+outputs:
+  decision:
+    description: "no_blocking_issue_found, review_first or do_not_install_yet"
+    value: ${{ steps.scan.outputs.decision }}
+  sarif:
+    description: "Path of the SARIF file (upload it with github/codeql-action/upload-sarif)"
+    value: ${{ steps.scan.outputs.sarif }}
+runs:
+  using: "composite"
+  steps:
+    - id: scan
+      shell: bash
+      env:
+        APPAUDIT_PATH: ${{ inputs.path }}
+        APPAUDIT_NAME: ${{ inputs.name }}
+        APPAUDIT_FAIL_ON: ${{ inputs.fail-on }}
+        APPAUDIT_BASELINE: ${{ inputs.baseline }}
+        APPAUDIT_IGNORE: ${{ inputs.ignore-file }}
+        APPAUDIT_OUT: ${{ inputs.output-dir }}
+        APPAUDIT_ROOT: ${{ github.action_path }}
+      run: |
+        set -u
+        if [ -z "$APPAUDIT_OUT" ]; then APPAUDIT_OUT="${RUNNER_TEMP:-/tmp}/appaudit-scan"; fi
+        PY=python3; command -v python3 >/dev/null 2>&1 || PY=python
+        args=("$APPAUDIT_PATH" --name "$APPAUDIT_NAME" --out "$APPAUDIT_OUT")
+        if [ -n "$APPAUDIT_BASELINE" ]; then args+=(--baseline "$APPAUDIT_BASELINE"); fi
+        if [ -n "$APPAUDIT_IGNORE" ]; then args+=(--ignore-file "$APPAUDIT_IGNORE"); fi
+        if [ "$APPAUDIT_FAIL_ON" != "none" ]; then args+=(--fail-on "$APPAUDIT_FAIL_ON"); fi
+        rc=0
+        "$PY" -I "$APPAUDIT_ROOT/skills/assess/scripts/scan_extension.py" "${args[@]}" || rc=$?
+        if [ -f "$APPAUDIT_OUT/capabilities.md" ]; then cat "$APPAUDIT_OUT/capabilities.md" >> "$GITHUB_STEP_SUMMARY"; fi
+        if [ -f "$APPAUDIT_OUT/inventory.json" ]; then
+          echo "decision=$("$PY" -c "import json,sys;print(json.load(open(sys.argv[1]))['decision'])" "$APPAUDIT_OUT/inventory.json")" >> "$GITHUB_OUTPUT"
+          echo "sarif=$APPAUDIT_OUT/candidates.sarif" >> "$GITHUB_OUTPUT"
+        fi
+        exit $rc

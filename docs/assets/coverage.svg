@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="1200" height="580" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">appaudit coverage</title><desc id="d">Product types appaudit covers, with standards and whether live testing is possible.</desc>
+<defs><marker id="a334155" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="a1D4ED8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D4ED8"/></marker><marker id="a0F766E" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/></marker><marker id="a6D28D9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6D28D9"/></marker><marker id="aB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="aB42318" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B42318"/></marker><marker id="a15803D" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803D"/></marker></defs>
+<rect width="1200" height="580" rx="16" fill="#F8FAFC" stroke="#CBD5E1"/>
+<text x="36" y="48" font-size="24" font-weight="800" fill="#0F172A" text-anchor="start">What appaudit covers</text>
+<text x="36" y="74" font-size="14" font-weight="400" fill="#475569" text-anchor="start">Static review of what you hand over is always possible; live testing only inside a scope you recorded</text>
+<text x="54" y="118" font-size="11.5" font-weight="700" fill="#475569" text-anchor="start">PRODUCT</text>
+<text x="470" y="118" font-size="11.5" font-weight="700" fill="#475569" text-anchor="start">MAIN STANDARDS</text>
+<text x="930" y="118" font-size="11.5" font-weight="700" fill="#475569" text-anchor="start">COVERAGE</text>
+<text x="1080" y="118" font-size="11.5" font-weight="700" fill="#475569" text-anchor="start">LIVE TESTS</text>
+<rect x="36" y="130" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="130" width="5" height="34" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="152" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Websites and web apps</text>
+<text x="470" y="152" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">OWASP Top 10:2025, ASVS 5.0.0</text>
+<rect x="930" y="136" width="43" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="951.5" y="149.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full</text>
+<text x="1080" y="152" font-size="12.5" font-weight="500" fill="#1D4ED8" text-anchor="start">in scope</text>
+<rect x="36" y="169" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="169" width="5" height="34" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="191" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">APIs: REST, GraphQL, gRPC</text>
+<text x="470" y="191" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">OWASP API Security Top 10 2023</text>
+<rect x="930" y="175" width="43" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="951.5" y="188.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full</text>
+<text x="1080" y="191" font-size="12.5" font-weight="500" fill="#1D4ED8" text-anchor="start">in scope</text>
+<rect x="36" y="208" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="208" width="5" height="34" rx="2" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="54" y="230" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Supply chain, CI/CD, infrastructure code</text>
+<text x="470" y="230" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">NIST SSDF, SLSA, CycloneDX / SPDX</text>
+<rect x="930" y="214" width="43" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="951.5" y="227.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full</text>
+<text x="1080" y="230" font-size="12.5" font-weight="500" fill="#475569" text-anchor="start">static only</text>
+<rect x="36" y="247" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="247" width="5" height="34" rx="2" fill="#0F766E" stroke="#0F766E" stroke-width="0"/>
+<text x="54" y="269" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Mobile apps: iOS, Android</text>
+<text x="470" y="269" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">OWASP MASVS 2.1, MASTG 2.0</text>
+<rect x="930" y="253" width="43" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="951.5" y="266.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full</text>
+<text x="1080" y="269" font-size="12.5" font-weight="500" fill="#1D4ED8" text-anchor="start">in scope</text>
+<rect x="36" y="286" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="286" width="5" height="34" rx="2" fill="#0F766E" stroke="#0F766E" stroke-width="0"/>
+<text x="54" y="308" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Smart-device and IoT apps</text>
+<text x="470" y="308" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">MASVS, ISVS 1.0, EN 18031</text>
+<rect x="930" y="292" width="43" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="951.5" y="305.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full</text>
+<text x="1080" y="308" font-size="12.5" font-weight="500" fill="#1D4ED8" text-anchor="start">in scope</text>
+<rect x="36" y="325" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="325" width="5" height="34" rx="2" fill="#0F766E" stroke="#0F766E" stroke-width="0"/>
+<text x="54" y="347" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Embedded devices and firmware</text>
+<text x="470" y="347" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">ISVS 1.0, ETSI EN 303 645, CRA</text>
+<rect x="930" y="331" width="95" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="977.5" y="344.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full (image)</text>
+<text x="1080" y="347" font-size="12.5" font-weight="500" fill="#475569" text-anchor="start">static only</text>
+<rect x="36" y="364" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="364" width="5" height="34" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="54" y="386" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">AI features, chatbots, agents</text>
+<text x="470" y="386" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">OWASP LLM Top 10 2026, Agentic ASI01-10</text>
+<rect x="930" y="370" width="43" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="951.5" y="383.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full</text>
+<text x="1080" y="386" font-size="12.5" font-weight="500" fill="#1D4ED8" text-anchor="start">in scope</text>
+<rect x="36" y="403" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="403" width="5" height="34" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="54" y="425" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Plugins, skills, MCP servers, hooks</text>
+<text x="470" y="425" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">OWASP Agentic Skills AST01-10, MCP best practices</text>
+<rect x="930" y="409" width="101" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="980.5" y="422.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full (static)</text>
+<text x="1080" y="425" font-size="12.5" font-weight="500" fill="#475569" text-anchor="start">static only</text>
+<rect x="36" y="442" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="442" width="5" height="34" rx="2" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="54" y="464" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Agent rules and settings in repositories</text>
+<text x="470" y="464" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">CLAUDE.md, AGENTS.md, .mcp.json, Cursor / Copilot rules</text>
+<rect x="930" y="448" width="101" height="23.5" rx="11.0" fill="#15803D" stroke="#15803D" stroke-width="0"/>
+<text x="980.5" y="461.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">full (static)</text>
+<text x="1080" y="464" font-size="12.5" font-weight="500" fill="#475569" text-anchor="start">static only</text>
+<rect x="36" y="481" width="1128" height="34" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<rect x="36" y="481" width="5" height="34" rx="2" fill="#334155" stroke="#334155" stroke-width="0"/>
+<text x="54" y="503" font-size="13.5" font-weight="600" fill="#0F172A" text-anchor="start">Browser extensions, custom GPTs, desktop apps</text>
+<text x="470" y="503" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">Manifest V3 model, LLM Top 10, CWE Top 25</text>
+<rect x="930" y="487" width="63" height="23.5" rx="11.0" fill="#B45309" stroke="#B45309" stroke-width="0"/>
+<text x="961.5" y="500.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">partial</text>
+<text x="1080" y="503" font-size="12.5" font-weight="500" fill="#475569" text-anchor="start">static only</text>
+<text x="36" y="538" font-size="12.5" font-weight="700" fill="#B42318" text-anchor="start">Not covered:</text>
+<text x="122" y="538" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">internal network and Active Directory tests, cloud-account reviews through cloud APIs, OT/ICS, physical and social engineering,</text>
+<text x="122" y="556" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">denial of service, red-team operations. Reports list what was not tested, so a missing finding is never read as a pass.</text>
+<text x="1170" y="562" font-size="11" font-weight="400" fill="#94A3B8" text-anchor="end">github.com/unipicto/appaudit</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">appaudit extension review</title><desc id="d">How a plugin, skill or MCP server is reviewed before installation.</desc>
+<defs><marker id="a334155" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="a1D4ED8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D4ED8"/></marker><marker id="a0F766E" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/></marker><marker id="a6D28D9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6D28D9"/></marker><marker id="aB45309" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="aB42318" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B42318"/></marker><marker id="a15803D" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803D"/></marker></defs>
+<rect width="1200" height="520" rx="16" fill="#F8FAFC" stroke="#CBD5E1"/>
+<text x="36" y="48" font-size="24" font-weight="800" fill="#0F172A" text-anchor="start">Reviewing a plugin, skill or MCP server before you install it</text>
+<text x="36" y="74" font-size="14" font-weight="400" fill="#475569" text-anchor="start">/appaudit:extension reads a copy. The extension is never installed, enabled or run</text>
+<rect x="36" y="112" width="196" height="150" rx="10" fill="#F1F5F9" stroke="#334155" stroke-width="1.4"/>
+<rect x="36" y="112" width="6" height="150" rx="3" fill="#334155" stroke="#334155" stroke-width="0"/>
+<text x="54" y="136" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">1. A copy</text>
+<text x="54" y="158" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Folder or archive:</text>
+<text x="54" y="176" font-size="13" font-weight="400" fill="#475569" text-anchor="start">plugin, skill, MCP</text>
+<text x="54" y="194" font-size="13" font-weight="400" fill="#475569" text-anchor="start">config, rules file,</text>
+<text x="54" y="212" font-size="13" font-weight="400" fill="#475569" text-anchor="start">browser extension.</text>
+<text x="54" y="230" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Or everything installed</text>
+<text x="54" y="248" font-size="13" font-weight="400" fill="#475569" text-anchor="start">here.</text>
+<rect x="268" y="112" width="196" height="150" rx="10" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.4"/>
+<rect x="268" y="112" width="6" height="150" rx="3" fill="#1D4ED8" stroke="#1D4ED8" stroke-width="0"/>
+<text x="286" y="136" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">2. Offline scanner</text>
+<text x="286" y="158" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Code, not a model:</text>
+<text x="286" y="176" font-size="13" font-weight="400" fill="#475569" text-anchor="start">cannot be persuaded.</text>
+<text x="286" y="194" font-size="13" font-weight="400" fill="#475569" text-anchor="start">64 rules, SHA-256 of</text>
+<text x="286" y="212" font-size="13" font-weight="400" fill="#475569" text-anchor="start">every file, hidden text</text>
+<text x="286" y="230" font-size="13" font-weight="400" fill="#475569" text-anchor="start">decoded.</text>
+<rect x="500" y="112" width="196" height="150" rx="10" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.4"/>
+<rect x="500" y="112" width="6" height="150" rx="3" fill="#0F766E" stroke="#0F766E" stroke-width="0"/>
+<text x="518" y="136" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">3. Reviewer agent</text>
+<text x="518" y="158" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Read-only. Does each</text>
+<text x="518" y="176" font-size="13" font-weight="400" fill="#475569" text-anchor="start">capability fit the</text>
+<text x="518" y="194" font-size="13" font-weight="400" fill="#475569" text-anchor="start">stated purpose?</text>
+<text x="518" y="212" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Plain-language intent,</text>
+<text x="518" y="230" font-size="13" font-weight="400" fill="#475569" text-anchor="start">toxic combinations.</text>
+<rect x="732" y="112" width="196" height="150" rx="10" fill="#F5F3FF" stroke="#6D28D9" stroke-width="1.4"/>
+<rect x="732" y="112" width="6" height="150" rx="3" fill="#6D28D9" stroke="#6D28D9" stroke-width="0"/>
+<text x="750" y="136" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">4. Verifier agent</text>
+<text x="750" y="158" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Checks every candidate</text>
+<text x="750" y="176" font-size="13" font-weight="400" fill="#475569" text-anchor="start">against the file.</text>
+<text x="750" y="194" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Text in the package</text>
+<text x="750" y="212" font-size="13" font-weight="400" fill="#475569" text-anchor="start">never lowers a verdict.</text>
+<rect x="964" y="112" width="196" height="150" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.4"/>
+<rect x="964" y="112" width="6" height="150" rx="3" fill="#B45309" stroke="#B45309" stroke-width="0"/>
+<text x="982" y="136" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">5. You decide</text>
+<text x="982" y="158" font-size="13" font-weight="400" fill="#475569" text-anchor="start">An install decision</text>
+<text x="982" y="176" font-size="13" font-weight="400" fill="#475569" text-anchor="start">with reasons and</text>
+<text x="982" y="194" font-size="13" font-weight="400" fill="#475569" text-anchor="start">conditions.</text>
+<text x="982" y="212" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Six outputs plus the</text>
+<text x="982" y="230" font-size="13" font-weight="400" fill="#475569" text-anchor="start">capabilities table.</text>
+<line x1="234" y1="187.0" x2="264" y2="187.0" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<line x1="466" y1="187.0" x2="496" y2="187.0" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<line x1="698" y1="187.0" x2="728" y2="187.0" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<line x1="930" y1="187.0" x2="960" y2="187.0" stroke="#334155" stroke-width="1.8" marker-end="url(#a334155)"/>
+<text x="36" y="300" font-size="12" font-weight="700" fill="#1D4ED8" text-anchor="start">FIRST THING YOU SEE: WHAT THIS EXTENSION CAN DO</text>
+<rect x="36" y="312" width="173" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="122.5" y="332" font-size="12" font-weight="500" fill="#0F172A" text-anchor="middle">Runs code automatically</text>
+<rect x="217" y="312" width="147" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="290.5" y="332" font-size="12" font-weight="500" fill="#0F172A" text-anchor="middle">Reaches the network</text>
+<rect x="372" y="312" width="167" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="455.5" y="332" font-size="12" font-weight="500" fill="#0F172A" text-anchor="middle">Reads credential files</text>
+<rect x="547" y="312" width="206" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="650.0" y="332" font-size="12" font-weight="500" fill="#0F172A" text-anchor="middle">Changes settings or start-up</text>
+<rect x="761" y="312" width="193" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="857.5" y="332" font-size="12" font-weight="500" fill="#0F172A" text-anchor="middle">Loosens permission prompts</text>
+<rect x="962" y="312" width="167" height="30" rx="15" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="1045.5" y="332" font-size="12" font-weight="500" fill="#0F172A" text-anchor="middle">Holds embedded secrets</text>
+<text x="36" y="384" font-size="12" font-weight="700" fill="#B45309" text-anchor="start">THE RECOMMENDATION</text>
+<rect x="36" y="396" width="366" height="64" rx="10" fill="#FEF2F2" stroke="#B42318" stroke-width="1.4"/>
+<text x="52" y="421" font-size="14.5" font-weight="700" fill="#B42318" text-anchor="start">Do not install</text>
+<text x="52" y="442" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">A verified Critical or High finding, or signs of malicious intent</text>
+<rect x="417" y="396" width="366" height="64" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.4"/>
+<text x="433" y="421" font-size="14.5" font-weight="700" fill="#B45309" text-anchor="start">Install only after conditions</text>
+<text x="433" y="442" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">For example: pin the version, remove a hook, narrow a permission</text>
+<rect x="798" y="396" width="366" height="64" rx="10" fill="#F0FDF4" stroke="#15803D" stroke-width="1.4"/>
+<text x="814" y="421" font-size="14.5" font-weight="700" fill="#15803D" text-anchor="start">No blocking issue found</text>
+<text x="814" y="442" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">Never called safe: static review cannot see run-time behaviour</text>
+<text x="36" y="492" font-size="12" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">Keep the scan folder: on the next update, --baseline flags new hosts, new automatic commands, new permission changes and changed instructions.</text>
+<text x="1170" y="502" font-size="11" font-weight="400" fill="#94A3B8" text-anchor="end">github.com/unipicto/appaudit</text>
+</svg>
