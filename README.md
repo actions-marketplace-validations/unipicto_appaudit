@@ -8,7 +8,7 @@ agent, flags regulatory deadlines in 9 jurisdictions, and delivers six audit-rea
 every run.
 
 [![ci](https://github.com/unipicto/appaudit/actions/workflows/ci.yml/badge.svg)](https://github.com/unipicto/appaudit/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-4.4.1-blue)
+![version](https://img.shields.io/badge/version-4.4.2-blue)
 ![license](https://img.shields.io/badge/license-Apache--2.0-green)
 
 > Use appaudit only on systems you own or have the owner's **written** permission to test.
@@ -146,6 +146,40 @@ Outputs: `decision` (`no_blocking_issue_found`, `review_first`, `do_not_install_
 file, for `github/codeql-action/upload-sarif`). The capabilities table appears in the job summary. The rules are listed in
 [module-agent-extensions.md](skills/assess/references/module-agent-extensions.md); a clean result means no
 blocking issue was found by static review, not that the code is safe.
+
+### What this Action does and does not check
+
+The Action is built for AI-agent add-ons: Claude Code and Cowork plugins, Agent Skills, subagents,
+hooks, MCP servers and MCP configuration files, rules files (`CLAUDE.md`, `AGENTS.md` and similar),
+browser extensions and GPT Action schemas. It is not a general vulnerability scanner.
+
+| Checks | Does not check |
+|--------|----------------|
+| Hidden or manipulative instructions in prompts, skills and rules files (prompt injection, concealment, exfiltration, invisible Unicode) | Bugs in application logic: SQL injection, XSS, broken access control |
+| Risky hooks, MCP server settings and browser-extension permissions | Known vulnerabilities (CVEs) in dependencies |
+| Code that downloads and runs code, reads credential files, collects environment variables or installs persistence | Configuration of web servers, cloud accounts or containers |
+| Credentials embedded in the package, switched-off TLS checks, install-time scripts | Mobile apps, firmware, or anything that has to run to be tested |
+| Archive tricks, and changes since the version you last reviewed (`baseline`) | Whether the add-on does what its author says it does (that needs a review: `/appaudit:extension`) |
+
+A few rules, such as embedded credentials and disabled TLS checks, apply to any code, but the rule
+set is written for agent add-ons. For the plugin's wider, Claude-assisted reviews of web apps,
+APIs, mobile apps, firmware and AI agents, see [What it covers](#what-it-covers).
+
+### Use it together with GitHub's free security tools
+
+For software you are about to publish, run this Action alongside the tools GitHub provides free
+for public repositories. Each covers a part the others do not.
+
+| Tool | What it finds | How to turn it on |
+|------|---------------|-------------------|
+| **CodeQL** (code scanning) | Vulnerabilities in your own code: injection, unsafe deserialisation, path traversal, insecure workflow patterns, in Python, JavaScript/TypeScript, Java, C#, C/C++, Go, Ruby, Swift and GitHub Actions workflows | *Default setup*: Settings → Advanced Security → CodeQL analysis → **Set up** → **Default**. *Advanced setup*: add a workflow file, as this repository does in [`.github/workflows/codeql.yml`](.github/workflows/codeql.yml). Results appear under Security → Code scanning, and on pull requests |
+| **Dependabot** | Dependencies with known vulnerabilities (alerts), pull requests that update them (security updates), and routine version updates | Alerts and security updates: Settings → Advanced Security → **Dependabot alerts** and **Dependabot security updates** → Enable. Version updates: add [`.github/dependabot.yml`](.github/dependabot.yml) listing each package ecosystem (`pip`, `npm`, `github-actions`, …) and a schedule |
+| **Secret scanning** with push protection | API keys and tokens committed to the repository; push protection blocks the push before the secret lands | Settings → Advanced Security → **Secret scanning** and **Push protection** → Enable (on by default for new public repositories) |
+
+This repository uses all three. CodeQL uses the advanced setup here so the workflow is reviewed and
+its action pinned by commit, like every other workflow in the repository; do not also switch on
+the default setup, because the two cannot run side by side. appaudit itself has no third-party
+dependencies, so Dependabot here only keeps the pinned GitHub Actions current.
 
 ## Components
 
